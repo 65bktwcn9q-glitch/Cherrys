@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 9%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 12%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 12%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 258 90% 66%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 215 30% 22%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 26% 18%;
+  --muted-foreground: 216 20% 70%;
+  --accent: 190 80% 45%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62% 45%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217 25% 24%;
+  --input: 217 25% 24%;
+  --ring: 258 90% 66%;
+  --radius: 16px;
+}
+
+.light {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --card: 210 40% 96%;
+  --card-foreground: 222 47% 11%;
+  --popover: 210 40% 96%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 258 90% 60%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 30% 90%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 30% 90%;
+  --muted-foreground: 222 20% 40%;
+  --accent: 190 80% 40%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62% 45%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 25% 86%;
+  --input: 214 25% 86%;
+  --ring: 258 90% 60%;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent;
+}
+
+.grid-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.1) 1px, transparent 0);
+  background-size: 24px 24px;
+}
