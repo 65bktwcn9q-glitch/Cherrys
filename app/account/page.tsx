@@ -12,12 +12,12 @@ export default function AccountPage() {
           Подключите Supabase Auth, чтобы показывать реальные данные пользователя, объявления и настройки профиля.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <Button asChild>
-            <Link href="/sell/new">Создать объявление</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/u/demo">Публичный профиль</Link>
-          </Button>
+          <Link href="/sell/new">
+            <Button>Создать объявление</Button>
+          </Link>
+          <Link href="/u/demo">
+            <Button variant="outline">Публичный профиль</Button>
+          </Link>
         </div>
       </div>
     </div>

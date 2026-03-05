@@ -4,7 +4,7 @@ export default function TermsPage() {
       <h1 className="text-3xl font-semibold">Условия пользования HyperGate</h1>
       <div className="space-y-4 text-sm text-white/75">
         <p>
-          Используя HyperGate, вы подтверждаете согласие с настоящими условиями. Услуги предоставляются по модели "как есть" с
+          Используя HyperGate, вы подтверждаете согласие с настоящими условиями. Услуги предоставляются по модели &quot;как есть&quot; с
           регулярными обновлениями и технической поддержкой.
         </p>
         <ul className="list-disc space-y-2 pl-5">
