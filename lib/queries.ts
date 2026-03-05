@@ -1,4 +1,12 @@
+import { ContactPreference, Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+
+const listingListInclude = {
+  game: true,
+  category: true,
+  images: { take: 1 },
+  user: true
+} satisfies Prisma.ListingInclude;
 
 export async function getHomeData() {
   const [games, categories, listings] = await Promise.all([
@@ -55,15 +63,20 @@ export async function getListings({
   page?: number;
   perPage?: number;
 }) {
-  const where = {
-    status: "ACTIVE" as const,
+  const parsedContactPreference =
+    contactPreference && ["TELEGRAM", "DISCORD", "BOTH"].includes(contactPreference)
+      ? (contactPreference as ContactPreference)
+      : undefined;
+
+  const where: Prisma.ListingWhereInput = {
+    status: "ACTIVE",
     gameId: game || undefined,
     categoryId: category || undefined,
     platform: platform || undefined,
-    title: query ? { contains: query, mode: "insensitive" } : undefined,
+    title: query ? { contains: query, mode: Prisma.QueryMode.insensitive } : undefined,
     language: language || undefined,
     country: country || undefined,
-    contactPreference: contactPreference || undefined,
+    contactPreference: parsedContactPreference,
     isOnline: isOnline ?? undefined
   };
 
@@ -73,15 +86,13 @@ export async function getListings({
       orderBy: { createdAt: "desc" },
       take: perPage,
       skip: (page - 1) * perPage,
-      include: {
-        game: true,
-        category: true,
-        images: { take: 1 },
-        user: true
-      }
+      include: listingListInclude
     }),
     prisma.listing.count({ where })
   ]);
 
-  return { items, total };
+  return {
+    items: items as Prisma.ListingGetPayload<{ include: typeof listingListInclude }>[],
+    total
+  };
 }
